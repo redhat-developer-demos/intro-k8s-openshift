@@ -1,0 +1,7 @@
+name: openshift-basics
+title: OpenShift Basics
+version: 0.1.0
+nav:
+  - modules/ROOT/nav.adoc
+
+start_page: ROOT:index.adoc
