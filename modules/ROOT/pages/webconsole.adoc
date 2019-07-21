@@ -1,0 +1,16 @@
+= Web Console
+While the command line tool is awesome, for this course we are going to focus on the web console, which is equally awesome.
+
+== Projects
+
+For the workshop we will use the following pre-created projects:
+
+=== Istio Tutorial 
+
+`tutorial{namespace-suffix}` will be used to perform all the servicemesh tasks.
+
+=== Knative Tutorial
+
+`{tutorial-namespace}` will be used to perform all the serverless tasks.
+
+We'll get into those in future sections, but go ahead and explore to see what's possible! Don't spend too much time on these now as you will get to use a lot of these features in the upcoming sections.

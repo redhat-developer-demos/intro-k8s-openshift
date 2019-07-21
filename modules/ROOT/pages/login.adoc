@@ -1,0 +1,37 @@
+== Login
+
+There are two ways to interact with OpenShift, one is using WebConsole and another is via command line interface(CLI).
+
+[source,bash,subs="attributes+,+macros"]
+----
+oc login -u userpass:[$WORKSHOP_USER] {ocpurl}
+----
+
+Once you login you will be given access to the following projects:
+
+* `tutorial{namespace-suffix}`
+* `{tutorial-namespace}`
+* `istio-system` (readonly)
+
+== Navigating projects
+
+To navigate to a project (namespace), you can use a command :
+
+[source,bash,subs="attributes+,+macros"]
+----
+oc project tutorial{namespace-suffix}
+----
+
+== Query project
+
+To query the project you are in, you can use a command :
+
+[source,bash,subs="attributes+,+macros"]
+----
+oc project -q
+----
+
+The command above should return an response like
+
+```
+```
