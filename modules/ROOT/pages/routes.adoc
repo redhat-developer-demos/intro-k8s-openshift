@@ -1,4 +1,5 @@
-= Routes and Services
+== Routes and Services
+:experimental:
 
 _Services_ provide internal abstraction and load balancing within an OpenShift
 environment, but sometimes clients (users, systems, devices, etc.) **outside**
@@ -12,38 +13,42 @@ security, such as TLS, for the _Route_. If you want your _Services_, and, by
 extension, your _Pods_,  to be accessible to the outside world, you need to
 create a _Route_.
 
+== View Services
+
+When we deployed the application earlier it would have created the __Service__ named **greeter** already, to view the created service navigate to menu:Networking[Services]
+
+image::services-list.png[]
+
 == Task: Creating a Route
 
-Fortunately, creating a _Route_ is a pretty straight-forward process.  You just click
-the *Create Route* link displayed against the application on the _Overview_ page.
+Fortunately, creating a _Route_ is a pretty straight-forward process. Navigate to menu:Networking[Routes].
 
-![No route](../../assets/introduction/getting-started/5no-route.png)
+image::no-route.png[]
 
-By default, OpenShift is configured to create the _Route_ based on the _Service_ name being exposed and the _Project_ where the application lives, adding a common subdomain configured at the platform level. In our scenario, we have:
+By default, OpenShift is configured to create the _Route_ based on the _Service_ name being exposed and the _Project_ where the application lives, adding a common subdomain configured at the platform level. 
 
-**{openshift-console-url}**.
+Update the route creation form with details as shown below
 
-This means that there is no need to change the default settings in the _Route_ creation form.
-
-![Route form](../../assets/introduction/getting-started/5create-route.png)
+image::create-route.png[]
 
 Once you click _Create_, the _Route_ will be created and displayed in the _Overview_ page.
 
-![Route created](../../assets/introduction/getting-started/5route-created.png)
+image::route-created.png[]
 
-We can also get the list of all the existing _Routes_ by clicking the _Applications->Routes_ menu:
+We can also get the list of all the existing _Routes_ by navigating to menu:Networking[Routes] form sidebar menu. Currently the list of _Routes_ will only display the one we just created.
 
-![Routes menu](../../assets/introduction/getting-started/5routes-menu.png)
-
-Currently the list of _Routes_ will only display the one we just created.
-
-![Routes list](../../assets/introduction/getting-started/5routes-list.png)
+image::routes-menu.png[]
 
 In this list, we will be able to see the details associated with the route, such as the hostname, the service, the port the route is exposing, and details on the TLS security for the route, if any.
 
 You can always click on the _Route_ name in this list to modify an existing _Route_.
 
-Now that we know how to create a _Route_, let's verify that the  application is really available at the URL shown in the
-web console. Click the link and you will see:
+Now that we know how to create a _Route_, let's verify that the  application is really available at the URL shown in the web console. 
 
-![Application](../../assets/introduction/getting-started/5parksmap-empty.png)
+image::routes-url.png[]
+
+Clicking the link and you will see the response 'Hi' from the service:
+
+image::greeter_response.png[]
+
+Congratulations! You now know how to create public facing URL for your application using OpenShift **routes**.

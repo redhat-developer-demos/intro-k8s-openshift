@@ -1,16 +1,33 @@
-= Web Console
+== Web Console
 While the command line tool is awesome, for this course we are going to focus on the web console, which is equally awesome.
+
+You can access the OpenShift Web Console using the url `{openshift-console-url}`.
+
+Your very first access will show you a login screen like:
+
+image::openshift_login.png[]
+
+You can login with `userpass:[$WORKSHOP_USER]` and check with your instructor for your user password.
+
+A successful login you will show a screen as below with the projects you have access to:
+
+image::webconsole_home_projects.png[]
 
 == Projects
 
-For the workshop we will use the following pre-created projects:
+For the workshop you wil use the following projects which are already created for you.
+
+[TIP]
+====
+You can use the command `oc new-project <project-name>` to create new projects. Since its a shared cluster, you will not be able to create new projects.
+====
 
 === Istio Tutorial 
 
-`tutorial{namespace-suffix}` will be used to perform all the servicemesh tasks.
+`tutorial{namespace-suffix}` will be used to perform all the Istio servicemesh exercises.
 
 === Knative Tutorial
 
-`{tutorial-namespace}` will be used to perform all the serverless tasks.
+`{tutorial-namespace}` will be used to perform all the Knative serverless exercises.
 
 We'll get into those in future sections, but go ahead and explore to see what's possible! Don't spend too much time on these now as you will get to use a lot of these features in the upcoming sections.

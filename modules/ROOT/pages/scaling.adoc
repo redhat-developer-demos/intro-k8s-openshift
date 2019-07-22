@@ -1,13 +1,17 @@
-= Scaling
-Let's scale our application up to 2 instances of the pods. You can do this by clicking the "up" arrow next to
-the *Pod* in the OpenShift web console on the overview page.
+== Scaling
+:experimental:
 
-![Scaling using arrows](../../assets/introduction/getting-started/4scaling-arrows.png)
+Select menu:Workloads[Deployment Configs] and click the `greeter` deployment
 
-To verify that we changed the number of replicas, click the pods number in the circle next to the arrows.
-You should see a list with your pods similar to the following by scrolling to the bottom of the web console:
+image::deployment_config_overview.png[]
 
-![List of pods](../../assets/introduction/getting-started/4scaling-pods.png)
+Click the Edit button in the **Desired Count** column under the **Deployment Config Overview** section and update the replicas to **2**
+
+image::deployment_config_edit_replicas.png[]
+
+You should see a list with your pods similar to the following by select menu:Workloads[Pods] from the sidebar navigation of the web console.
+
+image::deployment_config_scaled_replicas.png[]
 
 You can see that we now have 2 replicas.
 
@@ -18,22 +22,19 @@ is already cached on the node.
 
 == Application "Self Healing"
 
-Because OpenShift's *DeploymentConfigs* are constantly monitoring to see that the desired number
-of *Pods* is actually running, you might also expect that OpenShift will fix the
+Because OpenShift's *DeploymentConfigs* are constantly monitoring to see that the desired number of *Pods* is actually running, you might also expect that OpenShift will fix the
 situation if it is ever not right. You would be correct!
 
 Since we have two *Pods* running right now, let's see what happens if we
 "accidentally" kill one.
 
-On the same page where you viewed the list of pods after scaling to 2 replicas, open one of the pods by clicking its name in the list.
+On the same page where you viewed the list of pods (menu:Workloads[Pods]). You will see three vertical dots (context menus) on each row of the pod replicas. Select the action __Delete__ from the context menu:
 
-In the top right corner of the page, there is an _Actions_ tab. When opened, there is the _Delete_ action.
-
-![Delete action](../../assets/introduction/getting-started/4scaling-actions.png)
+image::deployment_config_delete_pod.png[]
 
 Click _Delete_ and confirm the dialog. You will be taken back to the page listing pods, however, this time, there are three pods.
 
-![List of pods](../../assets/introduction/getting-started/4scaling-terminating.png)
+image::deployment_config_healing.png[]
 
 The pod that we deleted is terminating (i.e., it is being cleaned up). A new pod was created because
 OpenShift will always make sure that, if one pod dies, there is going to be new pod created to
@@ -42,4 +43,4 @@ fill its place.
 == Exercise: Scale Down
 
 Before we continue, go ahead and scale your application down to a single
-instance. It's as simple as clicking the down arrow on the _Overview_ page.
+instance.

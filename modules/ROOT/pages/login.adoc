@@ -4,6 +4,7 @@ There are two ways to interact with OpenShift, one is using WebConsole and anoth
 
 [source,bash,subs="attributes+,+macros"]
 ----
+export WORKSHOP_USER=1
 oc login -u userpass:[$WORKSHOP_USER] {ocpurl}
 ----
 
@@ -13,14 +14,35 @@ Once you login you will be given access to the following projects:
 * `{tutorial-namespace}`
 * `istio-system` (readonly)
 
+e.g. you will seen an output like 
+
+```
+Login successful.
+
+You have access to the following projects and can switch between them with 'oc project <projectname>':
+
+  * istio-system
+    knativetutorial-1
+    tutorial-1
+
+Using project "istio-system".
+```
+
 == Navigating projects
 
 To navigate to a project (namespace), you can use a command :
 
 [source,bash,subs="attributes+,+macros"]
 ----
+# oc project <project-name>
 oc project tutorial{namespace-suffix}
 ----
+
+If you have right permissions on the project, you will be shown a message as below 
+
+```
+Now using project "tutorial-1" on server "https://api.cluster-sin-1975.sin-1975.openshiftworkshop.com:6443".
+```
 
 == Query project
 
@@ -31,7 +53,6 @@ To query the project you are in, you can use a command :
 oc project -q
 ----
 
-The command above should return an response like
+As we have are in project `tutorial-pass:[$WORKSHOP_USER]`, the command above should return you ``tutorial-pass:[$WORKSHOP_USER]``
 
-```
-```
+We will explore more on the OpenShift CLI (`oc`) as we progress through the workshop and its exercises.

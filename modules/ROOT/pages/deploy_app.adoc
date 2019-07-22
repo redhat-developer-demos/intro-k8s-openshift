@@ -1,6 +1,9 @@
-= Deploy Application
+== Deploy your first application
+:experimental:
 
 In this section you will be deploying simple REST API called `greeter`. This application has simple REST URL that returns **Hi**.
+
+Navigate to `tutorial-pass:[$WORKSHOP_USER]` from the list of projects.
 
 ==  Deploy Greeter
 
@@ -8,5 +11,18 @@ The simplest way to deploy an application in OpenShift is to take an existing Do
 
 The OpenShift web console provides various options to deploy an application to a project. For this section, we are going to use the *Deploy Image* method. As the project is empty at this point, the *Overview* page should display the following options: *Browse Catalog*, *Deploy Image*, *Import YAML/JSON*, and *Select from Project*. Choose the *Deploy Image* button.
 
-
 These are all the steps you need to run to get a "vanilla" Docker-formatted image deployed on OpenShift. This should work with any Docker-formatted image that follows best practices, such as defining the port any service is exposed on, not needing to run specifically as the *root user* or other dedicated user, and which embeds a default command for running the application.
+
+image::deploy_app_set_img.png[]
+
+After entering the application name as `greeter` click the deploy button to get the deployment started.
+
+A successful application deployment will show the `greeter` app in the project 
+
+image::deployed_app.png[]
+
+You can also navigate to the menu:Workloads[Pods] using the sidebar navigation to see the list of pods 
+
+image::deployed_app_pods.png[]
+
+Congratulations! You have deployed your first OpenShift Application. In upcoming sections we will see how to scale your application and make application service accessible.

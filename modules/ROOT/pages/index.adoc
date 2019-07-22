@@ -1,4 +1,4 @@
-= Introduction
+== OpenShift Container Platform
 
 In this self paced tutorial you will learn how to use the OpenShift Container Platform to build and deploy applications using both containers and orchestration.
 

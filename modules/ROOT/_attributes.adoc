@@ -1,3 +1,4 @@
+:experimental:
 :icons: font
 :stem: latexmath
 :source-highlighter: coderay
