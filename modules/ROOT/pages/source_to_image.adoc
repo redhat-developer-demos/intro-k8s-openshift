@@ -29,7 +29,7 @@ To deploy the application you are going to use the following command
 ----
 oc new-app quay.io/quarkus/ubi-quarkus-native-s2i:19.0.2~https://github.com/quarkusio/quarkus-quickstarts.git \
  --context-dir=getting-started \ 
- --build-env='MAVEN_MIRROR_URL=http://neuxus.tutorial:8081/nexus/content/groups/public' \
+ --build-env='MAVEN_MIRROR_URL=http://nexus.tutorial:8081/nexus/content/groups/public' \
  --name=quarkus-quickstart-native
 ----
 
@@ -40,7 +40,7 @@ It will take a bit of time for the application to build and deploy, you can watc
 oc logs -f bc/quarkus-quickstart-native
 ----
 
-You can find more information on available catalog on the "Developer Catalog"
+You can find more available application types from the "Developer Catalog"
 
 image::browse-catalog.png[]
 
@@ -54,8 +54,7 @@ oc expose svc/quarkus-quickstart-native
 
 [source,bash]
 ----
-# Get the route URL
 export URL="http://$(oc get route | grep quarkus-quickstart-native | awk '{print $2}')"
-echo $URL
-curl $URL/hello/greeting/quarkus
+echo pass:[$URL]
+curl pass:["$URL/hello/greeting/quarkus"]
 ----
