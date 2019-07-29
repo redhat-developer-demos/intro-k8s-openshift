@@ -13,42 +13,49 @@ built artifacts, etc.
 
 OpenShift is S2I-enabled and can use S2I as one of its build mechanisms (in addition to building Docker images from Dockerfiles and "custom" builds).
 
-A full discussion of S2I is beyond the scope of this lab. More information about S2I can be found in the https://docs.openshift.org/latest/creating_images/s2i.html[OpenShift S2I documentation] and the https://github.com/openshift/source-to-image[GitHub project respository for S2I].
+A full discussion of S2I is beyond the scope of this lab. More information about S2I can be found in the https://docs.openshift.org/latest/creating_images/s2i.html[OpenShift S2I documentation] and the https://github.com/openshift/source-to-image[GitHub project repository for S2I].
 
 The only key concept you need to remember about S2I is that it's magic.
 
 == Exercise: Deploying the application code
 
-The backend service that you will be deploying in this section is called `greeter`. This is a Java application that will return simple **Hi**  via a REST service API. The source code repository for the application can be found on GitHub at:
+The backend service that you will be deploying in this section is called `quarkus-quickstart-native`. This is a Java application that will return simple **Hello**  via a REST service API. The source code repository for the application can be found on GitHub at:
 
-* https://github.com/redhat-developer-demos/greeter
+* https://github.com/quarkusio/quarkus-quickstarts under directory **getting-started**
 
-To deploy the application you are going to use the *Add to Project* dropdown menu of the OpenShift web console, so ensure you have the OpenShift web console open and that you are in the project called `tutorial{namespace-suffix}`. Find and select the *Add to Project* dropdown in the right corner of the project. This time, rather than using *Deploy Image*, you want to use *Browse Catalog*, which will take you to the following page:
+To deploy the application you are going to use the following command
 
-![Browse Catalog](../../assets/introduction/getting-started/6browse-catalog.png)
+[source,bash,subs="+macros,attributes+"]
+----
+oc new-app quay.io/quarkus/ubi-quarkus-native-s2i:19.0.2~https://github.com/quarkusio/quarkus-quickstarts.git \
+ --context-dir=getting-started \ 
+ --build-env='MAVEN_MIRROR_URL=http://neuxus.tutorial:8081/nexus/content/groups/public' \
+ --name=quarkus-quickstart-native
+----
 
-Under the **Languages** section, select Java in the list of supported languages. When presented with the options of *Django + Postgres SQL*, *Django + Postgres SQL (Ephemeral)*, and *Python*, select the *Java* option.
+It will take a bit of time for the application to build and deploy, you can watch the status via the command:
 
-![Python Builder](../../assets/introduction/getting-started/6python-builder.png)
+[source,bash,subs="+macros,attributes+"]
+----
+oc logs -f bc/quarkus-quickstart-native
+----
 
-Upon selecting Python, click the *Next>* button on the bottom right of the screen to continue. Ensure that the Python version is 3.5 by selecting it from the *Version* dropdown menu.
+You can find more information on available catalog on the "Developer Catalog"
 
-![Create Python](../../assets/introduction/getting-started/6python-version.png)
+image::browse-catalog.png[]
 
-For the the *Name* of the application use: `greeter`
+With service now deployed you need to expose the service to get the public url:
 
-For the *Git Repository URL* use: `https://github.com/redhat-developer-demos/greeter`
+[source,bash]
+----
+# To create the route
+oc expose svc/quarkus-quickstart-native
+----
 
-Click on *Create* in the bottom right corner of the screen and then *Continue to the project overview*. In the overview page of the web console, you should now see both the front end web application and the backend web service you just deployed. The build of the backend web service will be collapsed upon returning to the *Overview* page. Click on the arrow to left of the `greeter name` to expand the pane as shown below:
-
-![Build Running](../../assets/introduction/getting-started/6build-running.png)
-
-You will see that initially a build is running for the Python application. This is the step where S2I is run on the application source code from the Git repository to create the image which will then be run. Click on the *View Full Log* link for the build and you can follow along as the S2I builder for Python downloads all the Python packages required to run the application, prepares the application, and creates the image.
-
-![Build Logs](../../assets/introduction/getting-started/6build-logs.png)
-
-Head back to the *Overview* page when the build completes to see the image being deployed and the application being started up. The build is complete when you see the following in the build logs: `Push successful`.
-
-![Build Complete](../../assets/introduction/getting-started/6build-complete.png)
-
-With the greeter service now deployed, you can invoke the application via browser or using `curl`.
+[source,bash]
+----
+# Get the route URL
+export URL="http://$(oc get route | grep quarkus-quickstart-native | awk '{print $2}')"
+echo $URL
+curl $URL/hello/greeting/quarkus
+----

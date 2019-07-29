@@ -7,23 +7,26 @@ Now that you have created an application to work with, the list of key resource 
 command. The output you will see from running this command will be similar to the following:
 
 ```
-NAME          DOCKER REPO                             TAGS      UPDATED
-is/parksmap   172.30.204.23:5000/myproject/parksmap   1.0.0     6 seconds ago
+NAME                   READY   STATUS      RESTARTS   AGE
+pod/greeter-1-c9mkw    1/1     Running     0          93m
+pod/greeter-1-deploy   0/1     Completed   0          117m
+pod/greeter-1-l6xmv    1/1     Running     0          92m
 
-NAME          REVISION   DESIRED   CURRENT   TRIGGERED BY
-dc/parksmap   1          1         0         config,image(parksmap:1.0.0)
+NAME                              DESIRED   CURRENT   READY   AGE
+replicationcontroller/greeter-1   2         2         2       117m
 
-NAME            DESIRED   CURRENT   READY     AGE
-rc/parksmap-1   0         0         0         5s
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/greeter   ClusterIP   172.30.33.137   <none>        8080/TCP   117m
 
-NAME              HOST/PORT                                                            PATH      SERVICES   PORT       TERMINATION
-routes/parksmap   parksmap-myproject.2886795339-80-ollie01.environments.katacoda.com             parksmap   8080-tcp
+NAME                                         REVISION   DESIRED   CURRENT   TRIGGERED BY
+deploymentconfig.apps.openshift.io/greeter   1          2         2         config,image(greeter:latest)
 
-NAME           CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-svc/parksmap   172.30.247.188   <none>        8080/TCP   30s
+NAME                                                      IMAGE REPOSITORY                                                                                                                  TAGS     UPDATED
+imagestream.image.openshift.io/greeter                    default-route-openshift-image-registry.apps.cluster-sin-1975.sin-1975.openshiftworkshop.com/tutorial-1/greeter                    latest   2 hours ago
+imagestream.image.openshift.io/knative-tutorial-greeter   default-route-openshift-image-registry.apps.cluster-sin-1975.sin-1975.openshiftworkshop.com/tutorial-1/knative-tutorial-greeter   latest   2 hours ago
 
-NAME                   READY     STATUS    RESTARTS   AGE
-po/parksmap-1-deploy   0/1       Pending   0          5s
+NAME                               HOST/PORT                                                                 PATH   SERVICES   PORT       TERMINATION   WILDCARD
+route.route.openshift.io/greeter   greeter-tutorial-1.apps.cluster-sin-1975.sin-1975.openshiftworkshop.com          greeter    8080-tcp                 None
 ```
 
 You can restrict the output to just the names of the resources by running:
@@ -33,12 +36,15 @@ You can restrict the output to just the names of the resources by running:
 In other words, supply the `-o name` option to change the output format.
 
 ```
-imagestreams/parksmap
-deploymentconfigs/parksmap
-replicationcontrollers/parksmap-1
-routes/parksmap
-services/parksmap
-pods/parksmap-1-deploy
+pod/greeter-1-c9mkw
+pod/greeter-1-deploy
+pod/greeter-1-l6xmv
+replicationcontroller/greeter-1
+service/greeter
+deploymentconfig.apps.openshift.io/greeter
+imagestream.image.openshift.io/greeter
+imagestream.image.openshift.io/knative-tutorial-greeter
+route.route.openshift.io/greeter
 ```
 
 The `oc get` command is the most basic command that exists in OpenShift for querying resource objects. You will use it a lot, so you should become familiar with it, as well as how to update resource objects.
@@ -50,8 +56,8 @@ In addition to being able to use the special name ``all`` to query information a
 For the application you have deployed, you should see something like:
 
 ```
-NAME       HOST/PORT                                                            PATH      SERVICES   PORT       TERMINATION
-parksmap   parksmap-myproject.2886795339-80-ollie01.environments.katacoda.com             parksmap   8080-tcp
+NAME      HOST/PORT                                                                 PATH   SERVICES   PORT       TERMINATION   WILDCARD
+greeter   greeter-tutorial-1.apps.cluster-sin-1975.sin-1975.openshiftworkshop.com          greeter    8080-tcp                 None
 ```
 
 You can get a list of all the different resource object types you can query by running
@@ -77,11 +83,11 @@ See 'oc get -h' for help and examples.
 
 In addition to being able to be queried using their full name, many resource object types can be queried using a shorter alias. You can therefore use `bc instead of `buildconfigs`.
 
-In all cases where the ``type`` of a resource object is listed as a plural, you can also use the ``type`` in its singular form. You can therefore use `route instead of `routes`.
+In all cases where the `type` of a resource object is listed as a plural, you can also use the `type` in its singular form. You can therefore use `route instead of `routes`.
 
 A high level description of the main resource object types, and other concepts, can be obtained by running the:
 
-`oc types`
+`oc api-resources`
 
 command.
 
