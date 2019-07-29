@@ -11,7 +11,6 @@ oc login -u userpass:[$WORKSHOP_USER] {ocpurl}
 Once you login you will be given access to the following projects:
 
 * `tutorial{namespace-suffix}`
-* `{tutorial-namespace}`
 * `istio-system` (readonly)
 
 e.g. you will seen an output like 
@@ -22,7 +21,6 @@ Login successful.
 You have access to the following projects and can switch between them with 'oc project <projectname>':
 
   * istio-system
-    knativetutorial-1
     tutorial-1
 
 Using project "istio-system".
@@ -41,7 +39,7 @@ oc project tutorial{namespace-suffix}
 If you have right permissions on the project, you will be shown a message as below 
 
 ```
-Now using project "tutorial-1" on server "https://api.cluster-sin-1975.sin-1975.openshiftworkshop.com:6443".
+Now using project "tutorial-1" on server "{ocpurl}".
 ```
 
 == Query project
