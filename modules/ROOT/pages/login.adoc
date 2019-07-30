@@ -38,9 +38,10 @@ oc project tutorial{namespace-suffix}
 
 If you have right permissions on the project, you will be shown a message as below 
 
-```
+[source,bash,subs="attributes+,+macros"]
+----
 Now using project "tutorial-1" on server "{ocpurl}".
-```
+----
 
 == Query project
 
