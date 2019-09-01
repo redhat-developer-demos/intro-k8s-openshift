@@ -19,25 +19,24 @@ The only key concept you need to remember about S2I is that it's magic.
 
 == Exercise: Deploying the application code
 
-The backend service that you will be deploying in this section is called `quarkus-quickstart-native`. This is a Java application that will return simple **Hello**  via a REST service API. The source code repository for the application can be found on GitHub at:
+The backend service that you will be deploying in this section is called `helloworld`. This is a nodejs application that will return simple **Hello**  via a REST service API. The source code repository for the application can be found on GitHub at:
 
-* https://github.com/quarkusio/quarkus-quickstarts under directory **getting-started**
+* https://github.com/redhat-developer-demos/linux-container-world-apps under directory **nodejs**
 
 To deploy the application you are going to use the following command
 
 [source,bash,subs="+macros,attributes+"]
 ----
-oc new-app quay.io/quarkus/ubi-quarkus-native-s2i:19.0.2~https://github.com/quarkusio/quarkus-quickstarts.git \
- --context-dir=getting-started \ 
- --build-env='MAVEN_MIRROR_URL=http://nexus.tutorial:8081/nexus/content/groups/public' \
- --name=quarkus-quickstart-native
+oc new-app nodeshift/centos7-s2i-nodejs:10.x~https://github.com/redhat-developer-demos/linux-container-world-apps \
+ --context-dir=nodejs \
+ --name=helloworld
 ----
 
 It will take a bit of time for the application to build and deploy, you can watch the status via the command:
 
 [source,bash,subs="+macros,attributes+"]
 ----
-oc logs -f bc/quarkus-quickstart-native
+oc logs -f bc/helloworld
 ----
 
 You can find more available application types from the "Developer Catalog"
@@ -49,12 +48,12 @@ With service now deployed you need to expose the service to get the public url:
 [source,bash,subs="+macros,attributes+"]
 ----
 # To create the route
-oc expose svc/quarkus-quickstart-native
+oc expose svc/helloworld
 ----
 
 [source,bash,subs="+macros,attributes+"]
 ----
-export URL="http://$(oc get route | grep quarkus-quickstart-native | awk '{print $2}')"
+export URL="http://$(oc get route | grep helloworld | awk '{print $2}')"
 echo pass:[$URL]
-curl pass:["$URL/hello/greeting/quarkus"]
+curl pass:["$URL"]
 ----

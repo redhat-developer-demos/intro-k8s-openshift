@@ -1,0 +1,33 @@
+:experimental:
+
+[#dev-env-intro]
+== Development Environment
+
+The development environment that You will be using for this workshop is based on https://www.eclipse.org/che/[Eclipse Che].The following sections helps you setup your development environment that you will be using for the workshop exercises.
+
+[#dev-env]
+== Workspace 
+
+An Eclipse Che **workspace** is a development environment which has an IDE, terminal, commands all wired together. As part of this lab each one of you will be provided with a separate workspace.
+
+You can open your workspace using the url:
+
+`{workspace-url}dashboard/#/ide/user<number>/linux-container-world-apps`
+
+[NOTE] 
+====
+Replace the number with your user number
+e.g.`{workspace-url}dashboard/#/ide/user1/linux-container-world-apps`
+====
+
+Once you are on your workspace navigate to menu:My Workspace[ User Runtimes > container-tools/New Terminal] using the right side navigation bar:
+
+image::che_terminal_select.png[]
+
+Selecting the terminal will openup a terminal window as shown below:
+
+image::che_container_tools_terminal.png[]
+
+Congratulations! Now you are all set to with developer environment for the workshop exercises.
+
+Good luck!

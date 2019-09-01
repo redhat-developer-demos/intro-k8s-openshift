@@ -1,17 +1,18 @@
 == Login
 
-There are two ways to interact with OpenShift, one is using WebConsole and another is via command line interface(CLI).
+There are two ways to interact with OpenShift, one is using web console `{openshift-console-url}` and another is via command line interface(CLI).
 
 [source,bash,subs="attributes+,+macros"]
 ----
 export WORKSHOP_USER=1
-oc login -u userpass:[$WORKSHOP_USER] {ocpurl}
+oc login --insecure-skip-tls-verify=true -u userpass:[$WORKSHOP_USER] {ocpurl}
 ----
 
 Once you login you will be given access to the following projects:
 
 * `tutorial{namespace-suffix}`
 * `istio-system` (readonly)
+* `workspacexxxxx`(your che workspace)
 
 e.g. you will seen an output like 
 
@@ -22,6 +23,7 @@ You have access to the following projects and can switch between them with 'oc p
 
   * istio-system
     tutorial-1
+    worksapceeeb5cruggda14ovgm
 
 Using project "istio-system".
 ```
