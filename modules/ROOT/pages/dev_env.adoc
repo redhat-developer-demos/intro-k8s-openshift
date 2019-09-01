@@ -16,8 +16,10 @@ You can open your workspace using the url:
 
 [NOTE] 
 ====
-Replace the number with your user number
+* Replace the number with your user number
 e.g.`{workspace-url}dashboard/#/ide/user1/linux-container-world-apps`
+
+* The workspace boot up will take approximately 3-5 mins
 ====
 
 Once you are on your workspace navigate to menu:My Workspace[ User Runtimes > container-tools/New Terminal] using the right side navigation bar:
