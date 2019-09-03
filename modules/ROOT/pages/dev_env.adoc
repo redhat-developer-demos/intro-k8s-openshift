@@ -18,15 +18,32 @@ You can open your workspace using the url:
 ====
 * Replace the number with your user number
 e.g.`{workspace-url}dashboard/#/ide/user1/linux-container-world-apps`
-
-* The workspace boot up will take approximately 3-5 mins
 ====
 
-Once you are on your workspace navigate to menu:My Workspace[ User Runtimes > container-tools/New Terminal] using the right side navigation bar:
+You will be redirected to login screen, where you select menu:Login with OAuth[OpenShift v4].
+
+image::login_with_openshift_oauth.png[]
+
+The **OpenShift v4** OAuth will take you to the OpenShift login screen where you enter the `username` and `password` that was allocated for you.
+
+image::ocp_login.png[]
+
+Clicking "LogIn" will take you **Authorize Access**, leave everything to defaults and click *Allow selected permissions** to take you to your workspace
+
+image::authorize_user_full.png[]
+
+[NOTE] 
+====
+* The workspace boot up will take approximately 3-5 mins
+* Authorize Access needs to be done only the first time
+====
+
+Once you are on your workspace (**user0/linux-container-world-a
+pps**) navigate to menu:My Workspace[ User Runtimes > container-tools/New Terminal] using the right side navigation bar:
 
 image::che_terminal_select.png[]
 
-Selecting the terminal will openup a terminal window as shown below:
+Selecting the terminal will open up a terminal window as shown below:
 
 image::che_container_tools_terminal.png[]
 

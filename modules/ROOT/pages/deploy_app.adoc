@@ -15,6 +15,11 @@ These are all the steps you need to run to get a "vanilla" Docker-formatted imag
 
 image::deploy_app_set_img.png[]
 
+[IMPORTANT]
+====
+Click the magnifying lens next to image name to verify and validate the container image that has been entered. Only on successful validation you will be able to proceed further in configuring the application.
+====
+
 After entering the application name as `greeter` click the deploy button to get the deployment started.
 
 A successful application deployment will show the `greeter` app in the project 
