@@ -21,13 +21,3 @@ For the workshop you wil use the following projects which are already created fo
 ====
 You can use the command `oc new-project <project-name>` to create new projects. Since its a shared cluster, you will not be able to create new projects.
 ====
-
-=== Istio Tutorial 
-
-`tutorial{namespace-suffix}` will be used to perform all the Istio servicemesh exercises.
-
-=== Knative Tutorial
-
-`{tutorial-namespace}` will be used to perform all the Knative serverless exercises.
-
-We'll get into those in future sections, but go ahead and explore to see what's possible! Don't spend too much time on these now as you will get to use a lot of these features in the upcoming sections.
