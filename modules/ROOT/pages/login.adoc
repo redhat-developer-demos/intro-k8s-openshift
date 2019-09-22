@@ -5,7 +5,7 @@ There are two ways to interact with OpenShift, one is using web console `{opensh
 [source,bash,subs="attributes+,+macros"]
 ----
 export WORKSHOP_USER=1
-oc login --insecure-skip-tls-verify=true -u userpass:[$WORKSHOP_USER] {ocpurl}
+oc login  -u userpass:[$WORKSHOP_USER] {ocpurl}
 ----
 
 Once you login you will be given access to the following projects:
