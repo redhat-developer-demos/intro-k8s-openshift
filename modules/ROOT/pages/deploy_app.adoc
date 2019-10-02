@@ -3,15 +3,21 @@
 
 In this section you will be deploying simple REST API called `greeter`. This application has simple REST URL that returns **Hi**.
 
-Navigate to `tutorial-pass:[$WORKSHOP_USER]` from the list of projects.
+Navigate to `tutorial-pass:[$WORKSHOP_USER]` from the list of projects. Switch to "Developer mode"
+
+image::switch_to_dev_mode.png[]
 
 ==  Deploy Greeter
 
 The simplest way to deploy an application in OpenShift is to take an existing Docker-formatted image and run it. We are going to use the OpenShift web console to do this, so ensure you have the OpenShift web console open and that you are in the project called `tutorial{namespace-suffix}`.
 
-The OpenShift web console provides various options to deploy an application to a project. For this section, we are going to use the *Deploy Image* method. As the project is empty at this point, the *Overview* page should display the following options: *Browse Catalog*, *Deploy Image*, *Import YAML/JSON*, and *Select from Project*. Choose the *Deploy Image* button.
+The OpenShift web console provides various options to deploy an application to a project. For this section, we are going to use the *Deploy Image* method.
 
-These are all the steps you need to run to get a "vanilla" Docker-formatted image deployed on OpenShift. This should work with any Docker-formatted image that follows best practices, such as defining the port any service is exposed on, not needing to run specifically as the *root user* or other dedicated user, and which embeds a default command for running the application.
+As the project is empty at this point, select menu:[Add] from sidebar navigation and choose the *Container Image* button.
+
+image::add_container_image.png[]
+
+These are all the steps you need to run to get a "vanilla" Docker-formatted image deployed on OpenShift. This should work with any Docker-formatted image that follows best practices, such as defining the port any service is exposed on, not needing to run specifically as the *root user* or other dedicated user, and which embeds a default command for running the application. For this example we will use the docker image `quay.io/rhdevelopers/knative-tutorial-greeter:quarkus`
 
 image::deploy_app_set_img.png[]
 

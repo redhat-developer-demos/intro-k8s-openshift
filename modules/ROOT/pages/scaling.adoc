@@ -1,11 +1,15 @@
 == Scaling
 :experimental:
 
+Navigate back to Administrator mode in the console
+
+image::switch_to_admin_mode.png[]
+
 Select menu:Workloads[Deployment Configs] and click the `greeter` deployment
 
 image::deployment_config_overview.png[]
 
-Click the Edit button in the **Desired Count** column under the **Deployment Config Overview** section and update the replicas to **2**
+Update the replicas to **2** by clicking on the **up** arrow
 
 image::deployment_config_edit_replicas.png[]
 

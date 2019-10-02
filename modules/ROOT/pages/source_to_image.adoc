@@ -39,10 +39,6 @@ It will take a bit of time for the application to build and deploy, you can watc
 oc logs -f bc/helloworld
 ----
 
-You can find more available application types from the "Developer Catalog"
-
-image::browse-catalog.png[]
-
 With service now deployed you need to expose the service to get the public url:
 
 [source,bash,subs="+macros,attributes+"]
