@@ -12,7 +12,7 @@ An Eclipse Che **workspace** is a development environment which has an IDE, term
 
 You can open your workspace using the url:
 
-`{workspace-url}dashboard/#/ide/user<number>/linux-container-world-apps`
+`{workspace-url}`
 
 [NOTE] 
 ====
